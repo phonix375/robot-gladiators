@@ -11,10 +11,7 @@ var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
 
-console.log(playerName);
-console.log(playerHealth, playerAttack, playerMoney);
-console.log("You can put regular sentences in these.");
-
+//inisialize the enemy bobotss
 var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
@@ -79,7 +76,5 @@ var fight = function(enemyName) {
 //fight();
 
 for(var i = 0; i < enemyNames.length; i++) {
-    console.log(enemyNames[i]);
-    console.log(i);
-    console.log(enemyNames[i] + " is at " + i + " index");
-  }
+  fight(enemyNames[i]);
+}
