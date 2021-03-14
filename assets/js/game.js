@@ -118,6 +118,7 @@ var endGame = function() {
 var fightOrSkip = function() {
   // ask player if they'd like to fight or skip using fightOrSkip function
   var promptFight = window.prompt('Would you like FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
+  promptFight = promptFight.toLowerCase();
 
   // Enter the conditional recursive function call here!
   // Conditional Recursive Function Call
@@ -135,16 +136,24 @@ var fightOrSkip = function() {
       window.alert(playerInfo.name + " has decided to skip this fight. Goodbye!");
       // subtract money from playerMoney for skipping
       playerInfo.playerMoney = playerInfo.money - 10;
+
+      //return tru if player wants to leave
       shop();
+      return true;
+    
     }
   }
+  return false;
 }
 
 // fight function (now with parameter for enemy's name)
 var fight = function(enemey) {
   while (playerInfo.health > 0 && enemey.health > 0) {
     // ask player if they'd like to fight or run
-    fightOrSkip();
+    if(fightOrSkip()){
+      //if true, leave fight by braking loop
+      break;
+    }
     //generate random damage value on playe's attack power
     var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
 
